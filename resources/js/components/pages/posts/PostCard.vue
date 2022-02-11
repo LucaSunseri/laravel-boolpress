@@ -11,9 +11,11 @@
         <p class="content">{{ maxCharacters }}</p>
         <p class="data">{{ formatData }}</p>
         <p class="card__apply">
-            <a class="card__link" href="#"
+            <router-link
+                class="card__link"
+                :to="{ name: 'show', params: { slug: post.slug } }"
                 >Vai al Post <i class="fas fa-arrow-right"></i
-            ></a>
+            ></router-link>
         </p>
     </div>
 </template>

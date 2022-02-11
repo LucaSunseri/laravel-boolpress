@@ -6,7 +6,8 @@ Vue.use(VueRouter)
 import Home from './components/pages/Home'
 import About from './components/pages/About'
 import Contacs from './components/pages/Contacs'
-import Posts from './components/pages/Posts'
+import Posts from './components/pages/posts/Posts'
+import Show from './components/pages/posts/Show'
 import NotFound from './components/pages/NotFound'
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
     { path: '/chi-sono', name: 'about', component: About },
     { path: '/contatti', name: 'contacs', component: Contacs },
     { path: '/posts', name: 'posts', component: Posts },
+    { path: '/posts/:slug', name: 'show', component: Show },
     { path: '*', component: NotFound },
   ]
 
