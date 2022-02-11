@@ -10,6 +10,7 @@ import Posts from './components/pages/posts/Posts'
 import Show from './components/pages/posts/Show'
 import NotFound from './components/pages/NotFound'
 
+
 const router = new VueRouter({
     mode: 'history',
     linkExactActiveClass: 'active', 
@@ -18,10 +19,9 @@ const router = new VueRouter({
       { path: '/chi-sono', name: 'about', component: About },
       { path: '/contatti', name: 'contacs', component: Contacs },
       { path: '/posts', name: 'posts', component: Posts },
-      { path: '/posts/:slug', name: 'show', component: Show },
+      { path: '/posts/:slug', name: 'show', component: Show},
       { path: '*', name: 'notFound', component: NotFound },
     ]
   })
-
 
 export default router;

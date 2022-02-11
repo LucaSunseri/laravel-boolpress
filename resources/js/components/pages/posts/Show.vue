@@ -1,5 +1,5 @@
 <template>
-    <main class="container">
+    <main v-if="exsist" class="container">
         <div v-if="post" class="post">
             <h1>{{ post.title }}</h1>
             <h5 v-if="post.category">
@@ -12,16 +12,23 @@
             <p class="content">{{ post.content }}</p>
         </div>
     </main>
+    <NotFound v-else />
 </template>
 
 <script>
+import NotFound from "../NotFound.vue";
+
 export default {
     name: "Show",
+    components: {
+        NotFound,
+    },
     data() {
         return {
             apiUrl: "http://127.0.0.1:8000/api/posts/",
             slug: this.$route.params.slug,
             post: null,
+            exsist: true,
         };
     },
     mounted() {
@@ -33,7 +40,11 @@ export default {
                 .get(this.apiUrl + this.slug)
                 .then((response) => {
                     // handle success
-                    this.post = response.data;
+                    if (response.data.slug === this.slug) {
+                        this.post = response.data;
+                    } else {
+                        this.exsist = false;
+                    }
                 })
                 .catch((error) => {
                     // handle error
