@@ -5,7 +5,7 @@
             <div class="container_post">
                 <PostCard v-for="post in posts" :key="post.id" :post="post" />
             </div>
-            <div class="pagination">
+            <div v-if="pagination" class="pagination">
                 <button
                     @click="getPosts(pagination.current - 1)"
                     :disabled="pagination.current == 1"
@@ -43,7 +43,7 @@ export default {
         return {
             apiUrl: "http://127.0.0.1:8000/api/posts?page=",
             posts: [],
-            pagination: {},
+            pagination: null,
         };
     },
     mounted() {
@@ -55,6 +55,7 @@ export default {
                 .get(this.apiUrl + page)
                 .then((response) => {
                     // handle success
+                    this.pagination = null;
                     this.posts = response.data.data;
                     this.pagination = {
                         current: response.data.current_page,
