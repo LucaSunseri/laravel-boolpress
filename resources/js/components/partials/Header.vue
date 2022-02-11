@@ -6,10 +6,20 @@
         </div>
         <div class="header_right">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#" class="active">Blog</a></li>
-                <li><a href="#">Chi sono!</a></li>
-                <li><a href="#">Contatti</a></li>
+                <li>
+                    <router-link :to="{ name: 'home' }">Home</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'posts' }">Posts</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'about' }">Chi sono!</router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'contacs' }"
+                        >Contatti</router-link
+                    >
+                </li>
             </ul>
         </div>
     </header>
