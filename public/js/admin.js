@@ -37351,9 +37351,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\lucas\OneDrive\Documenti\Boolean\Bolean Esercizi\Laravel\2022-02-09 laravel-api\resources\js\admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! C:\Users\lucas\OneDrive\Documenti\Boolean\Bolean Esercizi\Laravel\2022-02-09 laravel-api\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
-module.exports = __webpack_require__(/*! C:\Users\lucas\OneDrive\Documenti\Boolean\Bolean Esercizi\Laravel\2022-02-09 laravel-api\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
+__webpack_require__(/*! C:\Users\lucas\OneDrive\Documenti\Boolean\Bolean Esercizi\Laravel\laravel-boolpress\resources\js\admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! C:\Users\lucas\OneDrive\Documenti\Boolean\Bolean Esercizi\Laravel\laravel-boolpress\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+module.exports = __webpack_require__(/*! C:\Users\lucas\OneDrive\Documenti\Boolean\Bolean Esercizi\Laravel\laravel-boolpress\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
 
 
 /***/ })

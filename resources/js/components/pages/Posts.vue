@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import PostCard from "./partials/PostCard.vue";
+import PostCard from "../partials/PostCard.vue";
 
 export default {
     name: "Posts",
