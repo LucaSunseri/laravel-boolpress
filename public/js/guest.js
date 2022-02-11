@@ -2167,8 +2167,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Show"
+  name: "Show",
+  data: function data() {
+    return {
+      apiUrl: "http://127.0.0.1:8000/api/posts/",
+      slug: this.$route.params.slug,
+      post: null
+    };
+  },
+  mounted: function mounted() {
+    this.getApi();
+  },
+  methods: {
+    getApi: function getApi() {
+      var _this = this;
+
+      axios.get(this.apiUrl + this.slug).then(function (response) {
+        // handle success
+        _this.post = response.data;
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -4082,18 +4115,39 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("main", { staticClass: "container" }, [
+    _vm.post
+      ? _c(
+          "div",
+          { staticClass: "post" },
+          [
+            _c("h1", [_vm._v(_vm._s(_vm.post.title))]),
+            _vm._v(" "),
+            _vm.post.category
+              ? _c("h5", [
+                  _vm._v("\n            Categoria:\n            "),
+                  _c("span", { staticClass: "category" }, [
+                    _vm._v(_vm._s(_vm.post.category.name)),
+                  ]),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.post.tags, function (tag, index) {
+              return _c("span", { key: index, staticClass: "tag" }, [
+                _vm._v(_vm._s(tag.name)),
+              ])
+            }),
+            _vm._v(" "),
+            _c("p", { staticClass: "content" }, [
+              _vm._v(_vm._s(_vm.post.content)),
+            ]),
+          ],
+          2
+        )
+      : _vm._e(),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("main", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Titolo Post")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20459,35 +20513,34 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
-var routes = [{
-  path: '/',
-  name: 'home',
-  component: _components_pages_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
-}, {
-  path: '/chi-sono',
-  name: 'about',
-  component: _components_pages_About__WEBPACK_IMPORTED_MODULE_3__["default"]
-}, {
-  path: '/contatti',
-  name: 'contacs',
-  component: _components_pages_Contacs__WEBPACK_IMPORTED_MODULE_4__["default"]
-}, {
-  path: '/posts',
-  name: 'posts',
-  component: _components_pages_posts_Posts__WEBPACK_IMPORTED_MODULE_5__["default"]
-}, {
-  path: '/posts/:slug',
-  name: 'show',
-  component: _components_pages_posts_Show__WEBPACK_IMPORTED_MODULE_6__["default"]
-}, {
-  path: '*',
-  component: _components_pages_NotFound__WEBPACK_IMPORTED_MODULE_7__["default"]
-}];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   linkExactActiveClass: 'active',
-  routes: routes // short for `routes: routes`
-
+  routes: [{
+    path: '/',
+    name: 'home',
+    component: _components_pages_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: '/chi-sono',
+    name: 'about',
+    component: _components_pages_About__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, {
+    path: '/contatti',
+    name: 'contacs',
+    component: _components_pages_Contacs__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
+    path: '/posts',
+    name: 'posts',
+    component: _components_pages_posts_Posts__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }, {
+    path: '/posts/:slug',
+    name: 'show',
+    component: _components_pages_posts_Show__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, {
+    path: '*',
+    name: 'notFound',
+    component: _components_pages_NotFound__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
