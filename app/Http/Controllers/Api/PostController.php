@@ -20,12 +20,6 @@ class PostController extends Controller
         return response()->json($posts);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->with(['category', 'tags'])->first();
