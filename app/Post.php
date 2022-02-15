@@ -22,7 +22,9 @@ class Post extends Model
         'title',
         'content',
         'slug',
-        'category_id'
+        'category_id',
+        'image',
+        'image_original_name'
     ];
 
 

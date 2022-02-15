@@ -8,6 +8,7 @@ use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostFormRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -45,6 +46,13 @@ class PostController extends Controller
     public function store(PostFormRequest $request)
     {
         $post_created = $request->all();
+
+        if (array_key_exists('image', $post_created)) {
+
+            $post_created['image_original_name'] = $request->file('image')->getClientOriginalName();
+            $img_path = Storage::put('upload', $post_created['image']);
+            $post_created['image'] = $img_path;
+        }
 
         $new_post = new Post();
         $new_post->fill($post_created);

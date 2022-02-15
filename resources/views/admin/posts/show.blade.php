@@ -17,6 +17,10 @@
             <span class="badge bg-primary mb-4">{{ $tag->name }}</span>
         @endforeach
 
+        @if ($post->image)
+            <img src="{{ asset('storage/' . $post->image) }}" alt="">
+        @endif
+
         <p>{{ $post->content }}</p>
 
         <a href="{{ route('admin.posts.index') }}">Back Lista Post</a>
