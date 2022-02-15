@@ -9,7 +9,7 @@
 
         <h1>Modifica "{{ $post->title }}"</h1>
 
-        <form action="{{ route('admin.posts.update', $post) }}" method="post">
+        <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -40,7 +40,8 @@
                 <select class="form-control" name="category_id" id="category_id" aria-label="Default select example">
                     <option value="">Seleziona una Categoria</option>
                     @foreach ($categories as $category)
-                        <option @if ($category->id == old('category_id', $post->category_id)) selected @endif value="{{ $category->id }}">{{ $category->name }} </option>
+                        <option @if ($category->id == old('category_id', $post->category_id)) selected @endif value="{{ $category->id }}">
+                            {{ $category->name }} </option>
                     @endforeach
                 </select>
             </div>
@@ -50,10 +51,30 @@
                 @foreach ($tags as $tag)
                     <div class="custom-control custom-checkbox d-inline-block mr-3">
                         <input type="checkbox" class="custom-control-input" name="tags[]" value="{{ $tag->id }}"
-                            id="tag-{{ $tag->id }}" @if (!$errors->any() && $post->tags->contains($tag->id)) checked @elseif ($errors->any() && in_array($tag->id, old('tags', []))) checked @endif>
+                            id="tag-{{ $tag->id }}"
+                            @if (!$errors->any() && $post->tags->contains($tag->id)) checked @elseif ($errors->any() && in_array($tag->id, old('tags', []))) checked @endif>
                         <label class="custom-control-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="mb-2">
+                        <img width="250px" src="{{ asset('storage/' . $post->image) }}" alt="">
+                    </div>
+                    @if ($post->image)
+                        <label for="image">Modifica l' immagine</label>
+                    @else
+                        <label for="image">Inserisci un immagine</label>
+                    @endif
+                    <input type="file" class="form-control-file" name="image" id="image">
+                </div>
+                @error('image')
+                    <div class="invalid-feedback d-block">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

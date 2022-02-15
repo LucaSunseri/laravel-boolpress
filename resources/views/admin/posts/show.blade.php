@@ -18,7 +18,7 @@
         @endforeach
 
         @if ($post->image)
-            <img src="{{ asset('storage/' . $post->image) }}" alt="">
+            <img width="1000px" src="{{ asset('storage/' . $post->image) }}" alt="" class="d-block mb-3">
         @endif
 
         <p>{{ $post->content }}</p>

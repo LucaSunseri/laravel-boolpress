@@ -50,7 +50,7 @@ class PostController extends Controller
         if (array_key_exists('image', $post_created)) {
 
             $post_created['image_original_name'] = $request->file('image')->getClientOriginalName();
-            $img_path = Storage::put('upload', $post_created['image']);
+            $img_path = Storage::put('uploads', $post_created['image']);
             $post_created['image'] = $img_path;
         }
 
@@ -103,6 +103,15 @@ class PostController extends Controller
     {
         $post_edited = $request->all();
 
+        if (array_key_exists('image', $post_edited)) {
+            if ($post->image) {
+                Storage::delete($post->image);
+            }
+            $post_edited['image_original_name'] = $request->file('image')->getClientOriginalName();
+            $img_path = Storage::put('uploads', $post_edited['image']);
+            $post_edited['image'] = $img_path;
+        }
+
         $post->slug = Post::gerateSlug($post_edited['title']);
         $post->update($post_edited);
 
@@ -123,6 +132,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        if ($post->image) {
+            Storage::delete($post->image);
+        }
+
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with("deleted", "Il post '$post->title' è stato eliminato correttamente");
