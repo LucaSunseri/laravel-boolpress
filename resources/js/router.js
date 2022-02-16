@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 import Home from './components/pages/Home'
 import About from './components/pages/About'
-import Contacs from './components/pages/Contacs'
+import Contacts from './components/pages/Contacts'
 import Posts from './components/pages/posts/Posts'
 import Show from './components/pages/posts/Show'
 import NotFound from './components/pages/NotFound'
@@ -17,7 +17,7 @@ const router = new VueRouter({
     routes: [
       { path: '/', name: 'home', component: Home },
       { path: '/chi-sono', name: 'about', component: About },
-      { path: '/contatti', name: 'contacs', component: Contacs },
+      { path: '/contatti', name: 'contacts', component: Contacts },
       { path: '/posts', name: 'posts', component: Posts },
       { path: '/posts/:slug', name: 'show', component: Show},
       { path: '*', name: 'notFound', component: NotFound },

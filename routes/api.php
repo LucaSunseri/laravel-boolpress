@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Api')->prefix('posts')
     ->group(function () {
         Route::get('/', 'PostController@index');
-        Route::get('{slug}', 'PostController@show');
+        Route::get('/{slug}', 'PostController@show');
     });
+
+Route::post('/contacts', 'Api\ContactController@store');

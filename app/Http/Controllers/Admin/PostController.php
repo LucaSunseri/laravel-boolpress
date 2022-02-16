@@ -121,7 +121,7 @@ class PostController extends Controller
             $post->tags()->detach();
         }
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**

@@ -16,7 +16,7 @@
                     <router-link :to="{ name: 'about' }">Chi sono!</router-link>
                 </li>
                 <li>
-                    <router-link :to="{ name: 'contacs' }"
+                    <router-link :to="{ name: 'contacts' }"
                         >Contatti</router-link
                     >
                 </li>
