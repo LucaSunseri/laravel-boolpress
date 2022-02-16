@@ -93,7 +93,7 @@ export default {
                     } else {
                         this.errors = {};
                         this.success = true;
-                        setTimeout(() => (this.success = false), 8000);
+                        setTimeout(() => (this.success = false), 5000);
                         this.name = "";
                         this.surname = "";
                         this.email = "";
@@ -146,7 +146,8 @@ main {
                 }
                 .fields__message {
                     textarea {
-                        width: 350px;
+                        min-width: 350px;
+                        max-width: 800px;
                         padding: 5px;
                         min-height: 150px;
                         border-radius: 5px;
